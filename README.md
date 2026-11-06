@@ -38,7 +38,7 @@ Apresentação dos indicadores de rentabilidade das ações selecionadas.
 
 Comparação da volatilidade das ações e identificação dos maiores e menores preços.
 
-"Indicadores de volatilidade e preços" (imagens/analise_bancaria/indicadores_volatilidade_precos.png)
+![Indicadores de volatilidade e preços](./imagens/analise_bancaria/indicadores_volatilidade_precos.png)
 
 3. Evolução das cotações e análise de risco e retorno
 
