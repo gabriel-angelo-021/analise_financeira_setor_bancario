@@ -122,7 +122,3 @@ Após a execução, o Streamlit disponibilizará a aplicação no navegador.
 🎯 Objetivo do projeto
 
 Aplicar conhecimentos de programação, manipulação de dados, estatística e visualização de informações financeiras em um projeto prático de portfólio, desenvolvendo uma ferramenta interativa para análise comparativa do setor bancário brasileiro.
-
-⚠️ Aviso
-
-Este projeto possui finalidade educacional e de portfólio. Os resultados apresentados não constituem recomendações de investimento.
