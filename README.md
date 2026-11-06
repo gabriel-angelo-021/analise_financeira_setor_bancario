@@ -32,7 +32,7 @@ BTG Pactual| BPAC11
 
 Apresentação dos indicadores de rentabilidade das ações selecionadas.
 
-"Indicadores de rentabilidade" (imagens/analise_bancaria/indicadores_rentabilidade.png)
+![Indicadores de rentabilidade](./imagens/analise_bancaria/indicadores_rentabilidade.png)
 
 2. Indicadores de volatilidade e preços
 
