@@ -44,13 +44,15 @@ Comparação da volatilidade das ações e identificação dos maiores e menores
 
 Visualização do comportamento histórico das ações e comparação entre rentabilidade e volatilidade.
 
-"Evolução das cotações e risco e retorno" (imagens/analise_bancaria/evolucao_e_risco_retorno.png)
+![Evolução das cotações e risco-retorno](./imagens/analise_bancaria/evolucao_e_risco_retorno.png)
 
 4. Comparativo de rentabilidade e volatilidade
 
 Comparação visual do desempenho das cinco instituições financeiras.
 
-"Comparativo de rentabilidade e volatilidade" (imagens/analise_bancaria/comparativo_rentabilidade_volatilidade.png)
+![Comparativo de rentabilidade e volatilidade](./imagens/analise_bancaria/comparativo_rentabilidade_volatilidade.png)
+
+
 
 🛠️ Tecnologias utilizadas
 
