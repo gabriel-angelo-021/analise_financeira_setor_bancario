@@ -1,13 +1,16 @@
-
-import os
-import unicodedata
-from datetime import datetime
 import pandas as pd
 import streamlit as st
 import yfinance as yf
 
+
 # funções de carregamento de dados de ITUB4 , BBDC4, BBAS3, SANB11 e BPAC11
      # a análise de desempenho serar de 2020 até 2026
+st.set_page_config(
+    page_title="Desempenho do Mercado",
+    page_icon="📊",
+    layout="wide"
+)
+
 @st.cache_data
 def carregar_dados(empresas):
     texto_tickers = " ".join(empresas)
@@ -40,9 +43,7 @@ st.sidebar.header("Filtros")
 lista_acoes = st.sidebar.multiselect("Selecione as ações:", dados.columns)
 if lista_acoes:
     dados = dados[lista_acoes]
-    if len(lista_acoes) == 1:
-        acao_unica = lista_acoes[0]
-        dados = dados.rename(columns={acao_unica: "Close"})
+    
 
 # filtro de dados por data
 data_inicial = dados.index.min().to_pydatetime()
@@ -70,11 +71,20 @@ melhor_desempenho = rentabilidade.idxmax()
 pior_desempenho = rentabilidade.idxmin()
 
 # analise automatica
-print("ANÁLISE AUTOMÁTICA")
-print("==============================")
-print(f"Melhor desempenho: {melhor_desempenho} ({rentabilidade[melhor_desempenho]}%)")
-print(f"Pior desempenho: {pior_desempenho} ({rentabilidade[pior_desempenho]}%)")
-print("==============================")
+st.subheader("Análise automática de desempenho")
+coluna1, coluna2 = st.columns(2)
+with coluna1:
+    st.metric(
+        "Melhor desempenho",
+        melhor_desempenho,
+        f"{rentabilidade[melhor_desempenho]:.2f}%"
+    )
+with coluna2:
+    st.metric(
+        "Pior desempenho",
+        pior_desempenho,
+        f"{rentabilidade[pior_desempenho]:.2f}%"
+    )
 
 st.divider()
 # indicadores de rentabilidade
@@ -103,35 +113,68 @@ for coluna, (banco, valor) in zip(colunas, volatilidade.items()):
 
 # indicadores de maior e menor preco
 st.subheader("Preços das ações")
+banco_maior_preco = preco_maximo.idxmax()
+banco_menor_preco = preco_minimo.idxmin()
 coluna1, coluna2 = st.columns(2)
 with coluna1:
-    st.metric("Maior preço", f"R$ {preco_maximo.max():.2f}")
+    st.metric(
+        f"Maior preço — {banco_maior_preco}",
+        f"R$ {preco_maximo[banco_maior_preco]:.2f}"
+    )
 with coluna2:
-    st.metric("Menor preço", f"R$ {preco_minimo.min():.2f}")
+    st.metric(
+        f"Menor preço — {banco_menor_preco}",
+        f"R$ {preco_minimo[banco_menor_preco]:.2f}"
+    )
+# Graficosb de evolução histórica e comparativo com base 100
+col1, col2 = st.columns(2, gap="large")
 
- # grafico de evolução historica das ações
-st.subheader("Evolução histórica das ações")
-st.line_chart(dados)
-st.caption("Evolução das cotações de fechamento dos bancos selecionados no período analisado.")
+# Gráfico de evolução histórica
+with col1:
+    st.subheader("Evolução das cotações")
+    st.line_chart(
+        dados,
+        height=420,
+        use_container_width=True
+    )
+
+# Gráfico de dispersão — risco e retorno
+with col2:
+    st.subheader("Análise de risco e retorno")
+    dados_dispersao = pd.DataFrame({
+        "Banco": rentabilidade.index.astype(str),
+        "Volatilidade": volatilidade.values,
+        "Rentabilidade": rentabilidade.values
+    })
+    st.scatter_chart(
+        dados_dispersao,
+        x="Volatilidade",
+        y="Rentabilidade",
+        color="Banco",
+        height=420
+    )
 
 # graficos comparativos
 coluna1, coluna2 = st.columns(2)
+
 # grafico de rentabilidade
 with coluna1:
     st.subheader("Rentabilidade por banco")
-    st.bar_chart(rentabilidade)
-    st.caption("Variação percentual das ações no período selecionado.")
+    grafico_rentabilidade = rentabilidade.rename_axis("Banco").reset_index(name="Rentabilidade")
+    st.bar_chart(
+        grafico_rentabilidade,
+        x="Banco",
+        y="Rentabilidade",
+        color="Banco"
+    )
+   
 # grafico de volatilidade
 with coluna2:
     st.subheader("Volatilidade por banco")
-    st.bar_chart(volatilidade)
-    st.caption("Volatilidade anualizada das ações no período selecionado.")
-st.divider()
-st.caption(
-    "Fonte dos dados: Yahoo Finance | "
-    "Projeto desenvolvido em Python e Streamlit."
-)
-st.caption(
-    "Análise para fins educacionais e informativos. "
-    "Não constitui recomendação de investimento."
-)
+    grafico_volatilidade = volatilidade.rename_axis("Banco").reset_index(name="Volatilidade")
+    st.bar_chart(
+        grafico_volatilidade,
+        x="Banco",
+        y="Volatilidade",
+        color="Banco"
+    )

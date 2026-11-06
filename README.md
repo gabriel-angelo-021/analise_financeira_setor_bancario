@@ -1,12 +1,12 @@
 📊 Análise Financeira do Setor Bancário
 
-Dashboard interativo desenvolvido em Python e Streamlit para analisar e comparar o desempenho das ações de cinco dos principais bancos brasileiros.
+Dashboard interativo desenvolvido em Python e Streamlit para analisar e comparar o desempenho histórico de cinco instituições financeiras brasileiras por meio de indicadores estatísticos e visualizações financeiras.
 
-O projeto transforma dados históricos do mercado financeiro em indicadores e visualizações que facilitam a análise de rentabilidade, volatilidade e evolução das cotações.
+O projeto utiliza dados históricos de mercado para explorar a evolução das cotações, rentabilidade e volatilidade das ações, permitindo comparações entre os bancos e diferentes períodos de análise.
 
 🏦 Instituições analisadas
 
-Instituição| Código da ação
+Instituição| Código
 Itaú Unibanco| ITUB4
 Bradesco| BBDC4
 Banco do Brasil| BBAS3
@@ -15,40 +15,56 @@ BTG Pactual| BPAC11
 
 📈 Funcionalidades
 
-- Seleção individual ou conjunta dos bancos.
-- Filtro por período de análise.
-- Acompanhamento histórico das cotações.
-- Cálculo de rentabilidade.
+- Seleção individual ou conjunta das instituições financeiras.
+- Filtro interativo por período de análise.
+- Acompanhamento da evolução histórica das cotações.
+- Cálculo de rentabilidade percentual.
 - Cálculo de volatilidade anualizada.
 - Identificação dos maiores e menores preços.
-- Comparação de desempenho entre instituições.
+- Comparação do melhor e pior desempenho.
+- Análise de risco e retorno por meio de gráfico de dispersão.
 - Indicadores financeiros apresentados em cartões.
-- Gráficos para facilitar a análise comparativa.
+- Gráficos comparativos de rentabilidade e volatilidade.
 
 🖥️ Demonstração do dashboard
 
-Visão geral
+1. Indicadores de rentabilidade
 
-"Visão geral do dashboard" (imagens/deshbord.geral.png)
+Apresentação dos indicadores de rentabilidade das ações selecionadas.
 
-Comparativo: Itaú Unibanco e Santander
+"Indicadores de rentabilidade" (imagens/analise_bancaria/indicadores_rentabilidade.png)
 
-"Comparativo Itaú e Santander" (imagens/comparativo_itau_santander.png)
+2. Indicadores de volatilidade e preços
 
-Comparativo: Banco do Brasil, Bradesco e BTG Pactual
+Comparação da volatilidade das ações e identificação dos maiores e menores preços.
 
-"Comparativo Banco do Brasil, Bradesco e BTG Pactual" (imagens/comparativo_bb_bradesco_btg.png)
+"Indicadores de volatilidade e preços" (imagens/analise_bancaria/indicadores_volatilidade_precos.png)
+
+3. Evolução das cotações e análise de risco e retorno
+
+Visualização do comportamento histórico das ações e comparação entre rentabilidade e volatilidade.
+
+"Evolução das cotações e risco e retorno" (imagens/analise_bancaria/evolucao_e_risco_retorno.png)
+
+4. Comparativo de rentabilidade e volatilidade
+
+Comparação visual do desempenho das cinco instituições financeiras.
+
+"Comparativo de rentabilidade e volatilidade" (imagens/analise_bancaria/comparativo_rentabilidade_volatilidade.png)
 
 🛠️ Tecnologias utilizadas
 
-- Python: desenvolvimento e processamento.
-- Streamlit: construção da interface interativa.
-- Pandas: tratamento e análise dos dados.
-- yfinance: obtenção das cotações históricas.
+Tecnologia| Aplicação
+Python| Desenvolvimento e processamento
+Pandas| Manipulação e análise de dados
+Streamlit| Desenvolvimento do dashboard interativo
+yfinance| Obtenção de cotações históricas
 
 📡 Fonte dos dados
 
 Os dados históricos das ações são obtidos por meio do Yahoo Finance, utilizando a biblioteca "yfinance".
+
+Período de análise configurado: janeiro de 2020 a dezembro de 2026.
 
 📁 Estrutura do projeto
 
@@ -61,9 +77,11 @@ projeto_analise_financeira/
 │   └── app.py
 │
 ├── imagens/
-│   ├── deshbord.geral.png
-│   ├── comparativo_itau_santander.png
-│   └── comparativo_bb_bradesco_btg.png
+│   └── analise_bancaria/
+│       ├── indicadores_rentabilidade.png
+│       ├── indicadores_volatilidade_precos.png
+│       ├── evolucao_e_risco_retorno.png
+│       └── comparativo_rentabilidade_volatilidade.png
 │
 ├── .gitignore
 ├── README.md
@@ -73,7 +91,7 @@ projeto_analise_financeira/
 
 1. Clonar o repositório
 
-git clone URL_DO_SEU_REPOSITORIO
+git clone https://github.com/gabriel-angelo-021/analise_financeira_setor_bancario.git
 
 2. Entrar na pasta do projeto
 
@@ -85,7 +103,7 @@ python -m venv .venv
 
 4. Ativar o ambiente virtual
 
-No Windows PowerShell:
+Windows PowerShell:
 
 .\.venv\Scripts\Activate.ps1
 
@@ -97,12 +115,12 @@ python -m pip install -r requirements.txt
 
 python -m streamlit run .\deshboard\app.py
 
-Após executar o comando, o Streamlit disponibilizará o dashboard no navegador.
+Após a execução, o Streamlit disponibilizará a aplicação no navegador.
 
 🎯 Objetivo do projeto
 
-Aplicar conhecimentos de programação, análise de dados e visualização de informações financeiras em um projeto prático de portfólio, explorando indicadores e comparações entre instituições do setor bancário brasileiro.
+Aplicar conhecimentos de programação, manipulação de dados, estatística e visualização de informações financeiras em um projeto prático de portfólio, desenvolvendo uma ferramenta interativa para análise comparativa do setor bancário brasileiro.
 
 ⚠️ Aviso
 
-Este projeto possui finalidade educacional e de portfólio. As análises apresentadas não constituem recomendações de investimento.
+Este projeto possui finalidade educacional e de portfólio. Os resultados apresentados não constituem recomendações de investimento.
